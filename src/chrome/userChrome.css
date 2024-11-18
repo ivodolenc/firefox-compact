@@ -1,0 +1,147 @@
+/**
+ * Firefox Compact UI
+ *
+ * @version 0.1.0
+ * @license MIT License (c) Ivo Dolenc
+ * @source https://github.com/ivodolenc/firefox-compact
+ */
+
+:root {
+  --toolbar-height: 56px !important;
+  --toolbar-padding-left: 6px !important;
+  --toolbar-padding-right: 12px !important;
+  --urlbar-width: 300px !important;
+  --tab-min-height: 32px !important;
+  --tab-overflow-clip-margin: 6px !important;
+  --tab-border-radius: 10px !important;
+  --toolbarbutton-border-radius: 10px !important;
+
+  &[uidensity='compact'] {
+    --toolbar-height: 50px !important;
+    --toolbar-padding-left: 4px !important;
+    --toolbar-padding-right: 10px !important;
+    --urlbar-width: 260px !important;
+    --tab-min-height: 30px !important;
+    --tab-overflow-clip-margin: 5px !important;
+    --tab-border-radius: 8px !important;
+    --toolbarbutton-border-radius: 8px !important;
+    --toolbarbutton-inner-padding: 7px !important;
+  }
+
+  &:not([drawtitle='true']) {
+    --toolbar-padding-left: 84px !important;
+  }
+}
+
+#navigator-toolbox {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: var(--toolbar-height) !important;
+  border: none !important;
+
+  #PersonalToolbar {
+    display: none !important;
+  }
+}
+
+#nav-bar {
+  z-index: 20 !important;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  background: transparent !important;
+  padding-left: var(--toolbar-padding-left) !important;
+  padding-right: 4px !important;
+
+  #urlbar-container {
+    max-width: var(--urlbar-width) !important;
+  }
+
+  #urlbar {
+    --urlbar-height: var(--tab-min-height) !important;
+
+    &:not([focused], [open]) {
+      #urlbar-background {
+        background: transparent !important;
+      }
+
+      .urlbar-input-container {
+        background-color: var(--tab-hover-background-color);
+      }
+    }
+
+    #urlbar-background {
+      outline: none !important;
+      border: none !important;
+    }
+
+    #searchbar {
+      background: none !important;
+    }
+  }
+
+  #PanelUI-button {
+    display: none !important;
+  }
+}
+
+#titlebar {
+  z-index: 10 !important;
+  display: flex !important;
+  flex: 1 !important;
+  padding-right: var(--toolbar-padding-right) !important;
+
+  .titlebar-buttonbox-container {
+    position: fixed !important;
+    left: 0 !important;
+    display: flex !important;
+    align-self: center !important;
+    align-items: center !important;
+    height: 30px !important;
+    padding-left: 8px !important;
+  }
+
+  #TabsToolbar {
+    .titlebar-spacer {
+      width: 0 !important;
+    }
+
+    .tabbrowser-tab {
+      .tab-background {
+        background-color: var(--tab-hover-background-color);
+      }
+
+      &:hover {
+        .tab-background {
+          background-color: var(--tab-selected-bgcolor) !important;
+        }
+      }
+    }
+
+    .tab-icon-overlay {
+      display: none !important;
+    }
+
+    .tab-secondary-label {
+      display: none !important;
+    }
+  }
+}
+
+spacer[part='overflow-start-indicator'],
+spacer[part='overflow-end-indicator'] {
+  display: none !important;
+}
+
+#tabbrowser-tabs[haspinnedtabs] {
+  .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+    margin: 0 !important;
+  }
+}
+
+#tabbrowser-tabbox {
+  outline: 0 !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,15 @@
+/**
+ * Firefox Compact UI
+ *
+ * @version 0.1.0
+ * @license MIT License (c) Ivo Dolenc
+ * @source https://github.com/ivodolenc/firefox-compact
+ */
+
+@-moz-document url-prefix("about:home"),
+  url-prefix("about:newtab"),
+  url-prefix("about:blank") {
+  .personalizeButtonWrapper {
+    display: none !important;
+  }
+}
