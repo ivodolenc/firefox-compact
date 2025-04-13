@@ -1,7 +1,7 @@
 /**
  * Firefox Compact UI
  *
- * @version 0.1.0
+ * @version 0.1.1
  * @license MIT License (c) Ivo Dolenc
  * @source https://github.com/ivodolenc/firefox-compact
  */
@@ -10,6 +10,7 @@
   --toolbar-height: 56px !important;
   --toolbar-padding-left: 6px !important;
   --toolbar-padding-right: 12px !important;
+  --tabstoolbar-padding-right: 10px !important;
   --urlbar-width: 300px !important;
   --tab-min-height: 32px !important;
   --tab-overflow-clip-margin: 6px !important;
@@ -20,6 +21,7 @@
     --toolbar-height: 50px !important;
     --toolbar-padding-left: 4px !important;
     --toolbar-padding-right: 10px !important;
+    --tabstoolbar-padding-right: 8px !important;
     --urlbar-width: 260px !important;
     --tab-min-height: 30px !important;
     --tab-overflow-clip-margin: 5px !important;
@@ -28,7 +30,7 @@
     --toolbarbutton-inner-padding: 7px !important;
   }
 
-  &:not([drawtitle='true']) {
+  &:not([drawtitle='']) {
     --toolbar-padding-left: 84px !important;
   }
 }
@@ -87,46 +89,50 @@
   }
 }
 
+.titlebar-buttonbox-container {
+  position: fixed !important;
+  left: 0 !important;
+  display: flex !important;
+  align-self: center !important;
+  align-items: center !important;
+  height: 30px !important;
+  padding-left: 8px !important;
+}
+
+#TabsToolbar-customization-target {
+  padding-right: var(--tabstoolbar-padding-right) !important;
+}
+
 #titlebar {
   z-index: 10 !important;
   display: flex !important;
   flex: 1 !important;
   padding-right: var(--toolbar-padding-right) !important;
+}
 
-  .titlebar-buttonbox-container {
-    position: fixed !important;
-    left: 0 !important;
-    display: flex !important;
-    align-self: center !important;
-    align-items: center !important;
-    height: 30px !important;
-    padding-left: 8px !important;
+#TabsToolbar {
+  .titlebar-spacer {
+    width: 0 !important;
   }
 
-  #TabsToolbar {
-    .titlebar-spacer {
-      width: 0 !important;
+  .tabbrowser-tab {
+    .tab-background {
+      background-color: var(--tab-hover-background-color);
     }
 
-    .tabbrowser-tab {
+    &:hover {
       .tab-background {
-        background-color: var(--tab-hover-background-color);
-      }
-
-      &:hover {
-        .tab-background {
-          background-color: var(--tab-selected-bgcolor) !important;
-        }
+        background-color: var(--tab-selected-bgcolor) !important;
       }
     }
+  }
 
-    .tab-icon-overlay {
-      display: none !important;
-    }
+  .tab-icon-overlay {
+    display: none !important;
+  }
 
-    .tab-secondary-label {
-      display: none !important;
-    }
+  .tab-secondary-label {
+    display: none !important;
   }
 }
 
